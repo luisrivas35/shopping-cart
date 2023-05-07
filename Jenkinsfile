@@ -20,7 +20,7 @@ pipeline {
                         -Dsonar.language=java \
                         -Dsonar.java.binaries=./target/classes \
                         -Dsonar.sourceEncoding=UTF-8 \
-                        -Dsonar.host.url=http://192.168.100.13:9000 \
+                        -Dsonar.host.url=http://192.168.43.188:9000 \
                         -Dsonar.exclusions=src/test/java/****/*.java \
                         -Dsonar.login=squ_1b7bd1baab237ff86d7e54c37f9aa0f24eb941b3"
                 }
@@ -39,7 +39,7 @@ pipeline {
                         nexusArtifactUploader(
                             nexusVersion: "nexus3",
                             protocol: "http",
-                            nexusUrl: "192.168.100.13:8081",
+                            nexusUrl: "192.168.43.188:8081",
                             groupId: pom.groupId,
                             version: pom.version,
                             repository: "repo-nexus",
