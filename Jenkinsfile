@@ -7,11 +7,8 @@ pipeline {
             }
         }
         stage('SonarQube analysis') {
-            environment {
-                SCANNER_HOME = tool 'SonarQube Conexion'
-            }
             steps {
-                withSonarQubeEnv(credentialsId: 'SecretTextContent', installationName: 'SonarQube') {
+                script {
                     sh "/var/jenkins_home/sonar/bin/sonar-scanner \
                         -Dsonar.projectKey=projectKey \
                         -Dsonar.projectName=projectName \
@@ -20,8 +17,9 @@ pipeline {
                         -Dsonar.language=java \
                         -Dsonar.java.binaries=./target/classes \
                         -Dsonar.sourceEncoding=UTF-8 \
-                        -Dsonar.host.url=http://192.168.43.188:9000 \
+                        -Dsonar.host.url=http://192.168.100.13:9000 \
                         -Dsonar.exclusions=src/test/java/****/*.java \
+                        -Dsonar.projectVersion=${BUILD_NUMBER}-${GIT_COMMIT_SHORT} \
                         -Dsonar.login=squ_1b7bd1baab237ff86d7e54c37f9aa0f24eb941b3"
                 }
             }
