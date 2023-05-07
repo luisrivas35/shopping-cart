@@ -57,7 +57,7 @@ pipeline {
         }
     post{
         succeed {
-           slackSend channel: '#fundamentos-de-devops', token: "slack_token", color: 'good', , message: "${custom_msg()}", teamDomain: 'sustantivagrupo', tokenCredentialId: 'slack_token', username: 'Luis_Rivas'
+            slackSend channel: '#fundamentos-de-devops', token: "slack_token", color: 'good', message: "${custom_msg()}", teamDomain: 'sustantivagrupo', tokenCredentialId: 'slack_token', username: 'Luis_Rivas'
        }
         failure{
             slackSend channel: "#fundamentos-de-devops", token: "slack_token", color: "danger", message: "${custom_msg()}", teamDomain: 'sustantivagrupo', tokenCredentialId: 'slack_token', username: 'Luis_Rivas'
